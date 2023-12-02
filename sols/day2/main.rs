@@ -6,6 +6,7 @@ use std::io::Read;
 use regex::Regex;
 
 fn main() {
+    part_one();
     part_two();
 }
 
@@ -49,7 +50,7 @@ fn part_one() {
         is_possible = true;
     }
 
-    println!("{}", sum);
+    println!("Part 1: {}", sum);
 }
 
 fn part_two() {
@@ -83,5 +84,5 @@ fn part_two() {
         }
     }
 
-    println!("{}", sum);
+    println!("Part 2: {}", sum);
 }
