@@ -27,8 +27,7 @@ fn part_one() {
     colors.insert("blue", 14);
 
     let mut sum = 0;
-    for line in read_file() {
-        let mut is_possible = true;
+    'outer: for line in read_file() {
         let id = id_re.captures(&line).unwrap().get(1).unwrap().as_str().parse::<i32>().unwrap();
         let (_, cube_sets) = line.split_at(line.find(':').unwrap() + 2);
 
@@ -38,16 +37,12 @@ fn part_one() {
                 let color = cube_re.captures(cube).unwrap().get(2).unwrap().as_str();
 
                 if colors.get(color).unwrap() < &count {
-                    is_possible = false;
+                    continue 'outer;
                 }
             }
         }
 
-        if is_possible {
-            sum += id;
-        }
-
-        is_possible = true;
+        sum += id;
     }
 
     println!("Part 1: {}", sum);
