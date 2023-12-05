@@ -137,5 +137,5 @@ fn part_two() {
         //println!("After table: {:?}", current_ranges);
     }
 
-    println!("{:?}", current_ranges.iter().map(|x| x.0).min().unwrap());
+    println!("Part 2: {}", current_ranges.iter().map(|x| x.0).min().unwrap());
 }
