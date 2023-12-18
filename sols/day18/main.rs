@@ -64,6 +64,7 @@ fn part_two() {
     let mut vertices = Vec::new();
     let mut current_pos: (i64, i64) = (0, 0);
     let mut result: i64 = 0;
+    let mut boundary_points: u64 = 0;
 
     for vertice in input.iter() {
         let splitted = vertice.split(' ').collect::<Vec<&str>>();
@@ -83,9 +84,10 @@ fn part_two() {
 
         current_pos.0 += vector.0 * distance;
         current_pos.1 += vector.1 * distance;
+        boundary_points += distance as u64;
     }
 
-    println!("Part 2: {}", total_area(&vertices));
+    println!("Part 2: {}", total_area(&vertices) + (boundary_points as f64 / 2.0) + 1.0); //No clue why it's +1 instead of -1 as in Pick's
 }
 
 fn is_inside(vertices: &Vec<(i32, i32)>, point: (i32, i32)) -> bool {
